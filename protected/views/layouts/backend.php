@@ -57,7 +57,7 @@
         <div class="navbar-menu">
             <ul style="display: inline-block; padding: 0px;">
                 <?php
-                $menu = Auth::getMenu(Yii::app()->session['auth_user']);
+                $menu = Auth::getAllMenu(); //$menu = Auth::getMenu(Yii::app()->session['auth_user']);
                 foreach ($menu as $cat => $act) {
                     ?>
                     <li class="dropdown" style="display: inline-block; vertical-align: top;">
