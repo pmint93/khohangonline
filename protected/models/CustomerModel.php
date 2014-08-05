@@ -10,7 +10,11 @@
             return 'customer';
         }
         public $label = array(
-            'name'=>array(
+            'code'=>array(
+                        'name'=>'Code',
+                        'type'=>'varchar(20)',
+                        
+                    ),'name'=>array(
                         'name'=>'Name',
                         'type'=>'varchar(255)',
                         

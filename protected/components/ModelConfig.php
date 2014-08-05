@@ -225,6 +225,10 @@ class ModelConfig
                 )
             ),
             'customer' => array(
+                'code' => array(
+                    'type' => 'varchar(20)',
+                    'label' => 'Code'
+                ),
                 'name' => array(
                     'type' => 'varchar(255)',
                     'label' => 'Name'
