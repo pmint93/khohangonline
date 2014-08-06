@@ -8,7 +8,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="icon-leaf"></i>
-            Ace Admin
+            Quản lý kho hàng
         </small>
     </a><!-- /.brand -->
 </div><!-- /.navbar-header -->

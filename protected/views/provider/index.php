@@ -1,3 +1,6 @@
+<?php
+    $THISPAGE = Yii::app()->getBaseUrl(true) . "/provider";
+?>
 <div class="page-header">
     <h1>
         Nhà cung cấp
@@ -5,114 +8,108 @@
 </div>
 
 <div class="row">
+    <p>
+        <a href="<?php echo $THISPAGE ?>/add" class="btn btn-sm btn-info">Thêm mới</a>
+        <a href="javascript: deleteSelected();" class="btn btn-sm btn-danger">Xóa</a>
+    </p>
     <div class="col-xs-12">
         <?php
-        $tableheader = "Không có nhà cung cấp nào";
-        if(!isset($providers) || count($providers) <= 0){
-            $providers = array();
+        if (!isset($rows) || count($rows) <= 0) {
+            echo '<div class="table-header">Chưa có nhà cung cấp nào</div>';
         } else {
-            echo "Danh sách các nhà cung cấp";
+
+            ?>
+            <div class="table-header">Danh sách nhà cung cấp</div>
+            <div class="table-responsive">
+                <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th class="center">
+                            <label>
+                                <input type="checkbox" class="ace"/>
+                                <span class="lbl"></span>
+                            </label>
+                        </th>
+                        <th>Mã</th>
+                        <th>Tên</th>
+                        <th>Mô tả chi tiết</th>
+
+                        <th>
+                            <i class="icon-time bigger-110 hidden-480"></i>
+                            Ngày tạo
+                        </th>
+                        <th>Thao tác</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <?php
+
+                    foreach ($rows as $i => $row) {
+
+                        ?>
+                        <tr>
+                            <td class="center">
+                                <label>
+                                    <input type="checkbox" class="ace" data-id="<?php echo $row['id']; ?>"/>
+                                    <span class="lbl"></span>
+                                </label>
+                            </td>
+
+                            <td><?php echo $row["code"]; ?></td>
+                            <td><?php echo $row["name"]; ?></td>
+                            <td><?php echo $row["description"]; ?></td>
+                            <td><?php echo $row["create_on"]; ?></td>
+                            <td>
+                                <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                    <a class="green" href="<?php echo $THISPAGE."/edit/".$row["id"] ?>" title="Sửa">
+                                        <i class="icon-pencil bigger-130"></i>
+                                    </a>
+
+                                    <a class="red" href="<?php echo $THISPAGE."/delete/".$row["id"] ?>" title="Xóa">
+                                        <i class="icon-trash bigg er-130"></i>
+                                    </a>
+                                </div>
+
+                                <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                    <div class="inline position-relative">
+                                        <button class="btn btn-minier btn-yellow dropdown-toggle"
+                                                data-toggle="dropdown">
+                                            <i class="icon-caret-down icon-only bigger-120"></i>
+                                        </button>
+
+                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+
+                                            <li title="Sửa">
+                                                <a href="<?php echo $THISPAGE."/edit/".$row["id"] ?>" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                    <span class="green">
+                                                        <i class="icon-edit bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+
+                                            <li title="Xóa">
+                                                <a href="<?php echo $THISPAGE."/delete/".$row["id"] ?>" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                    <span class="red">
+                                                        <i class="icon-trash bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php
         }
         ?>
-        <div class="table-header"><?php echo $tableheader; ?></div>
-        <div class="table-responsive">
-            <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-                <thead>
-                <?php
-
-                foreach ($providers as $key => $provider){
-
-                ?>
-                <tr>
-                    <th class="center">
-                        <label>
-                            <input type="checkbox" class="ace"/>
-                            <span class="lbl"></span>
-                        </label>
-                    </th>
-                    <th>Mã</th>
-                    <th>Tên</th>
-                    <th class="hidden-480">Mô tả chi tiết</th>
-
-                    <th>
-                        <i class="icon-time bigger-110 hidden-480"></i>
-                        Ngày tạo
-                    </th>
-                    <th class="hidden-480">Thao tác</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr>
-                    <td class="center">
-                        <label>
-                            <input type="checkbox" class="ace"/>
-                            <span class="lbl"></span>
-                        </label>
-                    </td>
-
-                    <td>
-                        <a href="#">app.com</a>
-                    </td>
-                    <td>$45</td>
-                    <td class="hidden-480">3,330</td>
-                    <td>Feb 12</td>
-                    <td>
-                        <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                            <a class="blue" href="#">
-                                <i class="icon-zoom-in bigger-130"></i>
-                            </a>
-
-                            <a class="green" href="#">
-                                <i class="icon-pencil bigger-130"></i>
-                            </a>
-
-                            <a class="red" href="#">
-                                <i class="icon-trash bigger-130"></i>
-                            </a>
-                        </div>
-
-                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                            <div class="inline position-relative">
-                                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon-caret-down icon-only bigger-120"></i>
-                                </button>
-
-                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-                                    <li>
-                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <?php
-                }
-                ?>
-                </tbody>
-            </table>
-        </div>
     </div>
 </div>
 
@@ -155,5 +152,43 @@
             if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
             return 'left';
         }
-    })
+    });
+
+    function deleteSelected(){
+        /*
+        Rest API
+         */
+        var checkedIds = [];
+        $('table th input:checkbox').closest('table').find('tr > td:first-child input:checkbox:checked')
+            .each(function(){
+                if($(this).attr('data-id')) checkedIds.push($(this).attr('data-id'));
+            })
+        if(checkedIds.length){
+            if(!confirm("Xóa tất cả các nhà cung cấp đã chọn ?")) return;
+            $.ajax({
+                url: "<?php echo Yii::app()->getBaseUrl(true); ?>/provider/deleteAll",
+                method: "POST",
+                data: {
+                    ids: checkedIds
+                },
+                beforeSend: function(){
+
+                },
+                success: function(response){
+                    try{
+                        response = JSON.parse(response);
+                        if(!response.status){
+                            alert("Xóa thành công");
+                            if(confirm("Tải lại trang ?")) window.location.reload();
+                        }
+                    } catch (ex){
+                        alert("Xóa không thành công");
+                        throw ex;
+                    }
+                }
+            })
+        } else {
+            alert("Chọn ít nhất 1 nhà cung cấp !");
+        }
+    }
 </script>

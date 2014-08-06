@@ -45,12 +45,7 @@
     </a>
 </li>
 
-<li>
-    <a href="<?php echo Yii::app()->getBaseUrl(true)?>/provider">
-        <i class="icon-text-width"></i>
-        <span class="menu-text"> Nhà cung cấp </span>
-    </a>
-</li>
+<?php require_once("menu_dev.php");?>
 
 <li>
     <a href="#" class="dropdown-toggle">
