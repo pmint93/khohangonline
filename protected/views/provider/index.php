@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-    <p>
+    <p class="col-xs-12">
         <a href="<?php echo $THISPAGE ?>/add" class="btn btn-sm btn-info">Thêm mới</a>
         <a href="javascript: deleteSelected();" class="btn btn-sm btn-danger">Xóa</a>
     </p>
@@ -36,7 +36,7 @@
 
                         <th>
                             <i class="icon-time bigger-110 hidden-480"></i>
-                            Ngày tạo
+                            Lần sửa cuối
                         </th>
                         <th>Thao tác</th>
                     </tr>
@@ -60,7 +60,7 @@
                             <td><?php echo $row["code"]; ?></td>
                             <td><?php echo $row["name"]; ?></td>
                             <td><?php echo $row["description"]; ?></td>
-                            <td><?php echo $row["create_on"]; ?></td>
+                            <td><?php echo $row["modify_on"]; ?></td>
                             <td>
                                 <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                                     <a class="green" href="<?php echo $THISPAGE."/edit/".$row["id"] ?>" title="Sửa">

@@ -178,7 +178,8 @@ class ModelConfig
                 ),
                 'description' => array(
                     'type' => 'text',
-                    'label' => "Decription"
+                    'label' => "Decription",
+                    'null' => true
                 )
             ),
             'product' => array(
@@ -201,17 +202,19 @@ class ModelConfig
                 ),
                 'description' => array(
                     'type' => 'text',
-                    'label' => "Description"
+                    'label' => "Description",
+                    'null' => true
                 )
             ),
             'order_type' => array(
                 'code' => array(
                     'type' => 'varchar(20)',
-                    'label' => 'Order code'
+                    'label' => 'Order type code'
                 ),
                 'description' => array(
                     'type' => 'string',
-                    'label' => 'Description'
+                    'label' => 'Description',
+                    'null' => true
                 )
             ),
             'order_status' => array(
@@ -221,7 +224,8 @@ class ModelConfig
                 ),
                 'description' => array(
                     'type' => 'string',
-                    'label' => 'Description'
+                    'label' => 'Description',
+                    'null' => true
                 )
             ),
             'customer' => array(
@@ -235,7 +239,8 @@ class ModelConfig
                 ),
                 'description' => array(
                     'type' => 'string',
-                    'label' => 'Description'
+                    'label' => 'Description',
+                    'null' => true
                 )
             ),
             'provider' => array(
@@ -249,43 +254,51 @@ class ModelConfig
                 ),
                 'description' => array(
                     'type' => 'string',
-                    'label' => 'Description'
+                    'label' => 'Description',
+                    'null' => true
                 )
             ),
             'order' => array(
                 'code' => array(
                     'type' => 'varchar(20)',
-                    'label' => 'Code'
+                    'label' => 'Code',
+                    'null' => true
                 ),
                 'date' => array(
                     'type' => 'datetime',
                     'label' => 'Date'
                 ),
                 'type' => array(
-                    'type' => 'int',
+                    'type' => 'relation',
+                    'table' => 'order_type',
                     'label' => 'Type'
                 ),
                 'provider_id' => array(
                     'type' => 'relation',
                     'table' => 'provider',
-                    'label' => 'Provider id'
+                    'label' => 'Provider id',
+                    'null' => true
                 ),
                 'customer_id' => array(
                     'type' => 'relation',
                     'table' => 'customer',
-                    'label' => 'Customer id'
+                    'label' => 'Customer id',
+                    'null' => true
                 ),
                 'customer_name' => array(
                     'type' => 'varchar(255)',
-                    'label' => 'Customer name'
+                    'label' => 'Customer name',
+                    'null' => true
                 ),
                 'address' => array(
                     'type' => 'string',
-                    'label' => 'Address'
+                    'label' => 'Address',
+                    'null' => true
                 ),
                 'phone' => array(
                     'type' => 'varchar(50)',
-                    'label' => 'Phone number'
+                    'label' => 'Phone number',
+                    'null' => true
                 ),
                 'status' => array(
                     'type' => 'relation',
@@ -294,7 +307,8 @@ class ModelConfig
                 ),
                 'description' => array(
                     'type' => 'string',
-                    'label' => 'Description'
+                    'label' => 'Description',
+                    'null' => true
                 )
             ),
             'transfer' => array(
@@ -308,7 +322,8 @@ class ModelConfig
                 ),
                 'description' => array(
                     'type' => 'string',
-                    'label' => 'Description'
+                    'label' => 'Description',
+                    'null' => true
                 ),
                 'order_id' => array(
                     'type' => 'relation',

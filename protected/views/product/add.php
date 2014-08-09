@@ -29,11 +29,6 @@ if (isset($successMsg) && $successMsg) {
                 Thành công!
             </strong>
             <?php echo $successMsg; ?>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="<?php echo Yii::app()->getBaseUrl(true); ?>/category" class="btn btn-sm">
-                <i class="icon-undo bigger-110"></i>
-                Trở lại
-            </a>
         </p>
     </div>
 <?php

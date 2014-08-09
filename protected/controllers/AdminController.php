@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function init()
     {
         $this->layout = "backend";
-        Auth::login();
+//        Auth::login();
     }
 
     public function actionIndex()

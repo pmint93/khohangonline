@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-    <p>
+    <p class="col-xs-12">
         <a href="<?php echo Yii::app()->getBaseUrl() ?>/product/add" class="btn btn-sm btn-info">Thêm mới</a>
         <a href="javascript: deleteSelected();" class="btn btn-sm btn-danger">Xóa</a>
     </p>

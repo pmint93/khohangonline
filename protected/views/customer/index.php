@@ -1,27 +1,25 @@
 <?php
-    $THISPAGE = Yii::app()->getBaseUrl(true) . "/category";
-    $pageLabel = "Nhóm hàng";
+    $THISPAGE = Yii::app()->getBaseUrl(true) . "/customer";
 ?>
 <div class="page-header">
     <h1>
-        <?php echo $pageLabel; ?>
+        Đối tác/khách hàng
     </h1>
 </div>
 
 <div class="row">
     <p class="col-xs-12">
         <a href="<?php echo $THISPAGE ?>/add" class="btn btn-sm btn-info">Thêm mới</a>
-        <a href="javascript: EBE();" class="btn btn-sm btn-success">Xuất dữ liệu</a>
         <a href="javascript: deleteSelected();" class="btn btn-sm btn-danger">Xóa</a>
     </p>
     <div class="col-xs-12">
         <?php
         if (!isset($rows) || count($rows) <= 0) {
-            echo '<div class="table-header">Chưa có '.$pageLabel.' nào</div>';
+            echo '<div class="table-header">Chưa có đối tác/khách hàng nào</div>';
         } else {
 
             ?>
-            <div class="table-header">Danh sách <?php echo strtolower($pageLabel); ?></div>
+            <div class="table-header">Danh sách đối tác/khách hàng</div>
             <div class="table-responsive">
                 <table id="sample-table-2" class="table table-striped table-bordered table-hover">
                     <thead>
@@ -32,6 +30,7 @@
                                 <span class="lbl"></span>
                             </label>
                         </th>
+                        <th>Mã</th>
                         <th>Tên</th>
                         <th>Mô tả chi tiết</th>
 
@@ -58,6 +57,7 @@
                                 </label>
                             </td>
 
+                            <td><?php echo $row["code"]; ?></td>
                             <td><?php echo $row["name"]; ?></td>
                             <td><?php echo $row["description"]; ?></td>
                             <td><?php echo $row["modify_on"]; ?></td>
@@ -123,6 +123,7 @@
                 null,
                 null,
                 null,
+                null,
                 { "bSortable": false }
             ]
         });
@@ -163,9 +164,9 @@
                 if($(this).attr('data-id')) checkedIds.push($(this).attr('data-id'));
             })
         if(checkedIds.length){
-            if(!confirm("Xóa tất cả <?php echo strtolower($pageLabel); ?> đã chọn ?")) return;
+            if(!confirm("Xóa tất cả các đối tác/khách hàng đã chọn ?")) return;
             $.ajax({
-                url: "<?php echo $THISPAGE; ?>/deleteAll",
+                url: "<?php echo Yii::app()->getBaseUrl(true); ?>/customer/deleteAll",
                 method: "POST",
                 data: {
                     ids: checkedIds
@@ -187,49 +188,7 @@
                 }
             })
         } else {
-            alert("Chọn ít nhất 1 <?php echo strtolower($pageLabel); ?> !");
+            alert("Chọn ít nhất 1 đối tác/khách hàng !");
         }
-    }
-</script>
-<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true) ?>/assets/excel-builder/config.js"></script>
-<script>
-    function EBE(){
-        EBExport({
-            columns: function(){
-                var ret = [];
-                ret.push({
-                    id: "stt",
-                    name: "STT"
-                });
-                var headers = $("#sample-table-2 thead").find("th");
-                for(var i = 1; i < headers.length - 1; i++){
-                    ret.push({
-                        name: ExtFunctions.stripTags(headers[i].outerText),
-                        width: Math.round(headers[i].clientWidth/10)
-                    })
-                }
-                return ret;
-            },
-            data: function(){
-                var ret = [];
-                var rows = $("#sample-table-2 tbody").find("tr");
-                for(var i = 0; i < rows.length; i++){
-                    ret[i] = new Array();
-                    ret[i][0] = i;
-                    var tds = $(rows[i]).find("td");
-                    for(var j = 1; j < tds.length - 1; j++){
-                        ret[i].push(ExtFunctions.stripTags(tds[j].outerText));
-                    }
-                }
-                return ret;
-            },
-            onComplete: function(excel){
-                var a = document.createElement("a");
-                a.setAttribute('download', "Nhom hang.xlsx");
-                a.setAttribute('href', excel);
-                a.click();
-            }
-        });
-        return false;
     }
 </script>

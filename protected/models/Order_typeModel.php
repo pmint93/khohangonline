@@ -11,7 +11,7 @@
         }
         public $label = array(
             'code'=>array(
-                        'name'=>'Order code',
+                        'name'=>'Order type code',
                         'type'=>'varchar(20)',
                         
                     ),'description'=>array(

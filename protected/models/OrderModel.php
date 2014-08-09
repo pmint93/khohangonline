@@ -20,8 +20,8 @@
                         
                     ),'type'=>array(
                         'name'=>'Type',
-                        'type'=>'int',
-                        
+                        'type'=>'relation',
+                        'table'=>'order_type'
                     ),'provider_id'=>array(
                         'name'=>'Provider id',
                         'type'=>'relation',

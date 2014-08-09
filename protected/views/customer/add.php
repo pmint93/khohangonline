@@ -1,5 +1,5 @@
 <?php
-$THISPAGE = Yii::app()->getBaseUrl(true) . "/provider/add";
+$THISPAGE = Yii::app()->getBaseUrl(true) . "/customer/add";
 if (!isset($default)) $default = array(
     'code' => "",
     'name' => "",
@@ -8,7 +8,7 @@ if (!isset($default)) $default = array(
 ?>
 <div class="page-header">
     <h1>
-        Nhà cung cấp
+        Đối tác/khách hàng
         <small>
             <i class="icon-double-angle-right"></i>
             Tạo mới
@@ -52,9 +52,9 @@ if (isset($successMsg) && $successMsg) {
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
 
-        <form name="addprovider-form" class="form-horizontal" role="form" method="post">
+        <form name="addcustomer-form" class="form-horizontal" role="form" method="post">
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã nhà cung cấp </label>
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đối tác/khách hàng </label>
 
                 <div class="col-sm-9">
                     <input type="text" id="form-field-1" name="code" class="col-xs-10 col-sm-5"
@@ -88,7 +88,7 @@ if (isset($successMsg) && $successMsg) {
                 <div class="col-md-offset-3 col-md-9">
                     <input type="hidden" name="submited">
                     <button class="btn btn-info" type="button"
-                            onclick="javascript: document.forms['addprovider-form'].submit()">
+                            onclick="javascript: document.forms['addcustomer-form'].submit()">
                         <i class="icon-ok bigger-110"></i>
                         Tạo
                     </button>
