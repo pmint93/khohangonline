@@ -215,7 +215,7 @@
                 var rows = $("#sample-table-2 tbody").find("tr");
                 for(var i = 0; i < rows.length; i++){
                     ret[i] = new Array();
-                    ret[i][0] = i;
+                    ret[i][0] = i+1;
                     var tds = $(rows[i]).find("td");
                     for(var j = 1; j < tds.length - 1; j++){
                         ret[i].push(ExtFunctions.stripTags(tds[j].outerText));
