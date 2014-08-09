@@ -13,12 +13,16 @@ class CustomerController extends Controller{
         //Auth::login();
     }
     public function actionIndex(){
+        Auth::login();
+        Auth::permission('customer','index');
         $model = new CustomerModel();
         $this->render("index", array(
             'rows' => $model->findAll()
         ));
     }
     public function actionAdd(){
+        Auth::login();
+        Auth::permission('customer','index');
         if(isset($_POST['submited'])){
             if(
                 (isset($_POST['code']) && $_POST['code'] != "") &&
@@ -57,6 +61,8 @@ class CustomerController extends Controller{
         }
     }
     public function actionEdit(){
+        Auth::login();
+        Auth::permission('customer','index');
         $params = $this->getActionParams();
         if(isset($params['id']) || isset($params['code']) ){
             $model = new CustomerModel();
@@ -122,6 +128,8 @@ class CustomerController extends Controller{
         }
     }
     public function actionDelete(){
+        Auth::login();
+        Auth::permission('customer','index');
         $params = $this->getActionParams();
         if(isset($params['id']) || isset($params['code']) ){
             $model = new CustomerModel();
@@ -165,6 +173,8 @@ class CustomerController extends Controller{
         }
     }
     public function actionDeleteAll(){
+        Auth::login();
+        Auth::permission('customer','index');
         if(isset($_POST['ids']) && is_array($_POST['ids']) && count($_POST['ids']) > 0){
             $model = new CustomerModel();
             $condition = 'id IN ('.implode(',', $_POST['ids']).')';

@@ -193,7 +193,7 @@
         }
     }
 </script>
-<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true) ?>/assets/excel-builder/config.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->getBaseUrl(true);?>/assets/excel-builder/config.js"></script>
 <script>
     function EBE(){
         EBExport({

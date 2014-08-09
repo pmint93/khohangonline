@@ -13,6 +13,8 @@ class ProductController extends Controller{
         //Auth::login();
     }
     public function actionIndex(){
+        Auth::login();
+        Auth::permission('product','index');
         $rows = Yii::app()->db->createCommand()
             ->select('
                 product.*,
@@ -28,6 +30,8 @@ class ProductController extends Controller{
         ));
     }
     public function actionAdd(){
+        Auth::login();
+        Auth::permission('product','index');
         if(isset($_POST['submited'])){
             $categoryModel = new CategoryModel();
             $cats = $categoryModel->findAll();
@@ -102,6 +106,8 @@ class ProductController extends Controller{
         }
     }
     public function actionEdit(){
+        Auth::login();
+        Auth::permission('product','index');
         $params = $this->getActionParams();
         if(isset($params['id'])){
             $model = new ProductModel();
@@ -180,6 +186,8 @@ class ProductController extends Controller{
         }
     }
     public function actionDelete(){
+        Auth::login();
+        Auth::permission('product','index');
         $params = $this->getActionParams();
         if(isset($params['id'])){
             $model = new ProductModel();
@@ -239,6 +247,8 @@ class ProductController extends Controller{
         }
     }
     public function actionDeleteAll(){
+        Auth::login();
+        Auth::permission('product','index');
         if(isset($_POST['ids']) && is_array($_POST['ids']) && count($_POST['ids']) > 0){
             $model = new ProductModel();
             $condition = 'id IN ('.implode(',', $_POST['ids']).')';
@@ -259,5 +269,26 @@ class ProductController extends Controller{
                 'msg' => 'Invalid parameters !'
             ));
         }
+    }
+
+    public function actionTransfer_unknow(){
+        Auth::login();
+        Auth::permission('product','transfer_unknow');
+        Auth::login();
+        $this->render('transfer_unknow', array());
+    }
+
+    public function actionTransfer_dropship(){
+        Auth::login();
+        Auth::permission('product','transfer_dropship');
+        Auth::login();
+        $this->render('transfer_dropship', array());
+    }
+
+    public function actionTransferback_dropship(){
+        Auth::login();
+        Auth::permission('product','transferback_dropship');
+        Auth::login();
+        $this->render('transfer_dropship', array());
     }
 }

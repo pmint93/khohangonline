@@ -91,7 +91,7 @@ ExtFunctions = {
     }
 };
 
-var EBbase = "assets/excel-builder";
+var EBbase = _HOST+"/assets/excel-builder";
 $("head").append('<script type="text/javascript" src="' + EBbase + '/require.min.js"></script>');
 require.config({
     baseUrl: EBbase,

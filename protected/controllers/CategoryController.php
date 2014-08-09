@@ -13,12 +13,16 @@ class CategoryController extends Controller{
         //Auth::login();
     }
     public function actionIndex(){
+        Auth::login();
+        Auth::permission();
         $model = new CategoryModel();
         $this->render("index", array(
             'rows' => $model->findAll()
         ));
     }
     public function actionAdd(){
+        Auth::login();
+        Auth::permission('category','index');
         if(isset($_POST['submited'])){
             if(
                 (isset($_POST['name']) && $_POST['name'] != "") &&
@@ -54,6 +58,8 @@ class CategoryController extends Controller{
         }
     }
     public function actionEdit(){
+        Auth::login();
+        Auth::permission('category','index');
         $params = $this->getActionParams();
         if(isset($params['id'])){
             $model = new CategoryModel();
@@ -115,6 +121,8 @@ class CategoryController extends Controller{
         }
     }
     public function actionDelete(){
+        Auth::login();
+        Auth::permission('category','index');
         $params = $this->getActionParams();
         if(isset($params['id'])){
             $model = new CategoryModel();
@@ -156,6 +164,8 @@ class CategoryController extends Controller{
         }
     }
     public function actionDeleteAll(){
+        Auth::login();
+        Auth::permission('category','index');
         if(isset($_POST['ids']) && is_array($_POST['ids']) && count($_POST['ids']) > 0){
             $model = new CategoryModel();
             $condition = 'id IN ('.implode(',', $_POST['ids']).')';

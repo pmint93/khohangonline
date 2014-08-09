@@ -85,6 +85,7 @@ Class Auth
         $auth_membership = Yii::app()->params['auth_membership'];
         if (is_null($control)) $control = Yii::app()->controller->id;
         if (is_null($func)) $func = Yii::app()->controller->action->id;
+        Yii::app()->params['action-menu'] = $control.$func;
         try {
             $id = Yii::app()->session['auth_user'];
             $act_model = Yii::app()->params['menu_actions'];
@@ -93,6 +94,7 @@ Class Auth
 
             if ($act) {
                 $member_ship = new $auth_membership();
+                Yii::app()->params['menu-name'] = $act['name'];
                 $group_id = $member_ship->findAll("user_id = " . $id);
                 $arr_group = "(";
                 $num = 0;

@@ -13,9 +13,13 @@ class TransferController extends Controller{
         //Auth::login();
     }
     public function actionIndex(){
+        Auth::login();
+        Auth::permission('transfer','index');
         $this->render("index");
     }
     public function actionReceipt(){
+        Auth::login();
+        Auth::permission('transfer','receipt');
         /*
          * Nhap
          */
@@ -166,6 +170,9 @@ class TransferController extends Controller{
          * Xuat
          */
 
+        Auth::login();
+        Auth::permission('transfer','delivery');
+
         if(isset($_POST['submited'])){
             $order_model = new OrderModel();
             $transfer_model = new TransferModel();
@@ -309,6 +316,8 @@ class TransferController extends Controller{
         }
     }
     public function actionApiAll(){
+        Auth::login();
+        Auth::permission('transfer','receipt');
         if(isset($_POST['product_suggestion'])){
             $rows = (new ProductModel())->findAll('name like "%'.$_POST['product_suggestion'].'%"');
             $names = array();
